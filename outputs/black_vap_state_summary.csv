@@ -1,0 +1,21 @@
+state,map_type,districts,max_black_vap_share,majority_black_vap_districts
+AL,After redistricting,7,0.5065181660442968,1
+AL,Before redistricting,7,0.5190822105744539,1
+CA,After redistricting,52,0.273694226032796,0
+CA,Before redistricting,52,0.273694226032796,0
+FL,After redistricting,28,0.4771854426504398,0
+FL,Before redistricting,28,0.501140394485798,1
+LA,After redistricting,6,0.582556889147147,1
+LA,Before redistricting,6,0.5399012252617497,2
+MO,After redistricting,8,0.4501296802095868,0
+MO,Before redistricting,8,0.45389011868993095,0
+NC,After redistricting,14,0.3830531138908083,0
+NC,Before redistricting,14,0.40424437868412,0
+OH,After redistricting,15,0.44341537171146184,0
+OH,Before redistricting,15,0.44341537171146184,0
+TN,After redistricting,9,0.31667777955813764,0
+TN,Before redistricting,9,0.6032100378407943,1
+TX,After redistricting,38,0.4662419052725712,0
+TX,Before redistricting,38,0.41909151622737356,0
+UT,After redistricting,4,0.02826484365765471,0
+UT,Before redistricting,4,0.02019183845183004,0

@@ -1,0 +1,18 @@
+state,district_id,incumbent,incumbent_party,presidential_winner,house_winner_party,house_winner,split_ticket_type,in_redrawn_state
+CA,CA-9,Josh Harder,D,Trump,D,Democrat,Democrat won Trump district,TRUE
+CA,CA-13,Adam Gray,D,Trump,D,Democrat,Democrat won Trump district,TRUE
+ME,ME-2,Jared Golden,D,Trump,D,Democrat,Democrat won Trump district,FALSE
+MI,MI-8,Kristen McDonald Rivet,D,Trump,D,Democrat,Democrat won Trump district,FALSE
+MN,MN-3,Kelly Morrison,D,Harris,R,Republican,Republican won Harris district,FALSE
+NC,NC-1,Don Davis,D,Trump,D,Democrat,Democrat won Trump district,TRUE
+NE,NE-2,Don Bacon,R,Harris,R,Republican,Republican won Harris district,FALSE
+NJ,NJ-9,Nellie Pou,D,Trump,D,Democrat,Democrat won Trump district,FALSE
+NM,NM-2,Gabe Vasquez,D,Trump,D,Democrat,Democrat won Trump district,FALSE
+NV,NV-3,Susie Lee,D,Trump,D,Democrat,Democrat won Trump district,FALSE
+NY,NY-3,Tom Suozzi,D,Trump,D,Democrat,Democrat won Trump district,FALSE
+NY,NY-17,Mike Lawler,R,Harris,R,Republican,Republican won Harris district,FALSE
+OH,OH-9,Marcy Kaptur,D,Trump,D,Democrat,Democrat won Trump district,TRUE
+PA,PA-1,Brian Fitzpatrick,R,Harris,R,Republican,Republican won Harris district,FALSE
+TX,TX-28,Henry Cuellar,D,Trump,D,Democrat,Democrat won Trump district,TRUE
+TX,TX-34,Vicente Gonzalez,D,Trump,D,Democrat,Democrat won Trump district,TRUE
+WA,WA-3,Marie Gluesenkamp Perez,D,Trump,D,Democrat,Democrat won Trump district,FALSE
