@@ -45,5 +45,3 @@ not_on_ballot_incumbents <- incumbents %>%
 
 write_csv(steve_cohen, "outputs/steve_cohen_candidate_status.csv")
 write_csv(not_on_ballot_incumbents, "outputs/incumbents_not_on_ballot.csv")
-
-message("Wrote candidate-status outputs.")

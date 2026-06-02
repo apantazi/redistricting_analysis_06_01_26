@@ -1,0 +1,4 @@
+split_ticket_type,in_redrawn_state,districts
+Democrat won Trump district,TRUE,6
+Democrat won Trump district,FALSE,7
+Republican won Harris district,FALSE,4

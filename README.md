@@ -3,7 +3,7 @@
 ## Scripts
 
 -   `scripts/01_match_districts_by_population.R`\
-    Matches old districts to new districts in the 10 redrawn states using Census block population as the weight. It reads block assignment files, joins block population, calculates old-new district overlap, and writes a population-weighted crosswalk. It also checks the plan-level overlap with `redist::match_numbers()`.
+    Matches old districts to new districts in the 10 redrawn states using Census block population as the weight. It reads block assignment files, joins block population, calculates old-new district overlap, and writes a population-weighted crosswalk. It also checks the plan-level overlap with `redist::match_numbers()`. It separately writes member-specific population-fragment tables for Cleo Fields, Debbie Wasserman Schultz and Steve Cohen.
 
 -   `scripts/02_harris_won_before_after.R`\
     Calculates how many districts Harris and Trump carried before redistricting and under the post-redistricting maps. It reports both nationwide counts and counts for the 10 redrawn states. Alabama is shown both ways: with the attempted GOP-backed map and without it.
@@ -19,6 +19,9 @@
 
 -   `scripts/06_candidate_status_examples.R`\
     Pulls candidate status.
+
+-   `scripts/07_split_ticket_redistricting_effect.R`\
+    Compares 2024 House winners with the post-redistricting districts where incumbents are actually running, using Ballotpedia candidate status when available. It also keeps the population-matched successor district as a separate column, so unusual cases like Debbie Wasserman Schultz can be checked against both the logical successor district and the district where the incumbent filed.
 
 ## Data folders
 
@@ -63,11 +66,17 @@
 -   **Split-ticket Democratic targets:** Nationally, 13 Democrats won Trump-carried districts in 2024. In the 10 redrawn states, six Democrats won Trump-carried districts.\
     Check: `scripts/04_2024_congressional_winners.R` -\> `outputs/2024_split_ticket_districts.csv`
 
+-   **Split-ticket redistricting exposure:** Of the 13 Democrats who won Trump-carried districts in 2024, six were in states that redrew their maps. Four of those six now face more Republican presidential terrain; two California Democrats were moved into more Democratic terrain. None of the four Republicans who won Harris-carried districts were in the redrawn states.\
+    Check: `scripts/07_split_ticket_redistricting_effect.R` -\> `outputs/current_split_ticket_districts_by_redistricting_status.csv`; `outputs/split_ticket_redistricting_exposure_summary.csv`; `outputs/split_ticket_redistricting_exposure_by_member.csv`
+
 -   **Cleo Fields/Louisiana claim:** Cleo Fields won LA-6 in 2024, when the district was Black-majority by voting-age population. Under the new Louisiana map, LA-6 gave Trump 65.0% of the total presidential vote, or 66.2% of the two-party vote.\
     Check: `scripts/04_2024_congressional_winners.R` -\> `outputs/2024_house_winners_by_district.csv`; `scripts/05_black_vap_changes.R` -\> `outputs/black_vap_by_district.csv`; `scripts/02_harris_won_before_after.R` -\> `outputs/presidential_map_scenarios.csv`
 
 -   **Steve Cohen/Tennessee Black VAP claim:** Tennessee's old 9th District was 60.3% Black voting-age population. After redistricting, the highest-Black-VAP Tennessee district is 31.7%.\
     Check: `scripts/05_black_vap_changes.R` -\> `outputs/steve_cohen_tennessee_black_vap_claim.csv`
+
+-   **Member district-fragment claims:** Cleo Fields' old LA-6 sends 27.7% of its population to the new LA-6. Debbie Wasserman Schultz's old FL-25 sends just 2.1% of its population to the new FL-20, where she filed. Steve Cohen is marked as not on the ballot; the largest piece of his old TN-9 goes to the new TN-8, at 36.3%.\
+    Check: `scripts/01_match_districts_by_population.R` -\> `outputs/member_old_district_population_fragments.csv`; `outputs/member_running_district_population_summary.csv`
 
 ## Notes
 

@@ -111,4 +111,49 @@ write_csv(crosswalk_all, "outputs/district_population_matches.csv")
 write_csv(overlap_pairs_all, "outputs/district_population_overlap_pairs.csv")
 write_csv(diagnostic_all, "outputs/district_population_match_diagnostics.csv")
 
-message("Wrote population-weighted district matching outputs.")
+member_examples <- tribble(
+  ~member, ~state, ~old_district, ~running_new_district, ~note,
+  "Cleo Fields", "LA", 6L, 6L, "Filed in Louisiana's new 6th District",
+  "Debbie Wasserman Schultz", "FL", 25L, 20L, "Filed in Florida's new 20th District",
+  "Steve Cohen", "TN", 9L, NA_integer_, "Marked did_not_make_ballot in Ballotpedia candidate data"
+)
+
+new_district_totals <- overlap_pairs_all %>%
+  group_by(state, new_district) %>%
+  summarise(new_district_total_pop = sum(matched_pop), .groups = "drop")
+
+member_old_district_fragments <- overlap_pairs_all %>%
+  inner_join(member_examples, by = c("state", "old_district")) %>%
+  group_by(member, state, old_district) %>%
+  mutate(
+    old_district_total_pop = sum(matched_pop),
+    old_district_share_in_new_district = matched_pop / old_district_total_pop,
+    old_district_pct_in_new_district = 100 * old_district_share_in_new_district
+  ) %>%
+  ungroup() %>%
+  left_join(new_district_totals, by = c("state", "new_district")) %>%
+  mutate(
+    new_district_share_from_old_district = matched_pop / new_district_total_pop,
+    new_district_pct_from_old_district = 100 * new_district_share_from_old_district,
+    is_running_district = !is.na(running_new_district) & new_district == running_new_district
+  ) %>%
+  arrange(member, desc(old_district_pct_in_new_district))
+
+member_running_district_summary <- member_old_district_fragments %>%
+  filter(is_running_district | is.na(running_new_district)) %>%
+  group_by(member) %>%
+  slice_max(old_district_pct_in_new_district, n = 1, with_ties = FALSE) %>%
+  ungroup() %>%
+  transmute(
+    member,
+    state,
+    old_district,
+    running_new_district,
+    comparison_new_district = new_district,
+    note,
+    old_district_pct_in_comparison_district = old_district_pct_in_new_district,
+    comparison_district_pct_from_old_district = new_district_pct_from_old_district
+  )
+
+write_csv(member_old_district_fragments, "outputs/member_old_district_population_fragments.csv")
+write_csv(member_running_district_summary, "outputs/member_running_district_population_summary.csv")
